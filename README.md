@@ -1,55 +1,24 @@
-## usersテーブル名
+# README
 
-|Column|Type|Options|
-|---------|----|--------|
-|nickname |string|null: false   |
-|email    |string|null:false   |
-|first_name|string|null:false|
-|last_name|string|null:false|
-|encrypted_password|string|null:false|
-|birth_year|string|null:false|
-|birth_month|string|null:false|
-|birth_day|string|null:false|
+This README would normally document whatever steps are necessary to get the
+application up and running.
 
-### Association
-- has_many :item
-- has_many :comment
-- has_one  :order
+Things you may want to cover:
 
-## itemsテーブル名
+* Ruby version
 
-|Column|Type|Options|
-|---------|----|--------|
-|item_text |string|null: false   |
-|item_price   |string|null:false   |
-|image|string|null:false|
-|user|references|null:false, foreign_key: true |
+* System dependencies
 
-### Association
-- belongs_to :user
-- has_many :comment
-- has_one  :order
+* Configuration
 
-## commentsテーブル名
+* Database creation
 
-|Column|Type|Options|
-|---------|----|--------|
-|comment_text |string|null: false   |
-|user   |references|null:false,foreign_key: true   |
-|item|references|null:false,foreign_key: true|
+* Database initialization
 
-### Association
-- belongs_to :user
-- belongs_to :comment
+* How to run the test suite
 
-## ordersテーブル名
+* Services (job queues, cache servers, search engines, etc.)
 
-|Column|Type|Options|
-|---------|----|--------|
-|addres |string|null: false   |
-|user   |references|null:false,foreign_key: true   |
-|item|references|null:false,foreign_key: true|
+* Deployment instructions
 
-### Association
-- belongs_to :user
-- belongs_to :comment
+* ...
