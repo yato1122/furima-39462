@@ -6,28 +6,29 @@
 |email    |string|null:false   |
 |first_name|string|null:false|
 |last_name|string|null:false|
+|first_name_kana|string|null:false|
+|last_name_kana|string|null:false|
 |encrypted_password|string|null:false|
-|birth_year|string|null:false|
-|birth_month|string|null:false|
-|birth_day|string|null:false|
+|birth_day|date|null:false|
+
 
 ### Association
-- has_many :item
-- has_many :comment
+- has_many :items
+- has_many :comments
 - has_one  :order
 
 ## itemsテーブル名
 
 |Column|Type|Options|
 |---------|----|--------|
-|item_text |string|null: false   |
-|item_price   |string|null:false   |
-|image|string|null:false|
+|item_title |string|null:false |
+|item_text |text|null: false   |
+|item_price |integer|null:false   |
 |user|references|null:false, foreign_key: true |
 
 ### Association
 - belongs_to :user
-- has_many :comment
+- has_many :comments
 - has_one  :order
 
 ## commentsテーブル名
@@ -40,13 +41,15 @@
 
 ### Association
 - belongs_to :user
-- belongs_to :comment
+- belongs_to item
 
-## ordersテーブル名
+## addressesテーブル名
 
 |Column|Type|Options|
 |---------|----|--------|
-|addres |string|null: false   |
+|post_code|integer|null: false   |
+|address |text|null: false   |
+|tell|string|null: false   |
 |user   |references|null:false,foreign_key: true   |
 |item|references|null:false,foreign_key: true|
 
