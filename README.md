@@ -14,8 +14,7 @@
 
 ### Association
 - has_many :items
-- has_many :address
-- has_one  :order
+- has_many :order
 
 ## Itemsテーブル名
 
@@ -24,7 +23,13 @@
 |item_title |string|null:false |
 |item_text |text|null: false   |
 |item_price |integer|null:false   |
-|item_comment|string|null:false |
+|category |string|null:false   |
+|condition |string|null:false |
+|shipping_fee |string|null:false |
+|shipping_area |string|null:false |
+|shipping_days |string|null:false |
+|sales_commission |string|null:false   |
+|profit |string|null:false   |
 |user|references|null:false, foreign_key: true |
 
 ### Association
@@ -35,13 +40,12 @@
 
 |Column|Type|Options|
 |---------|----|--------|
-|comment_text |string|null: false   |
 |user   |references|null:false,foreign_key: true   |
 |item|references|null:false,foreign_key: true|
 
 ### Association
 - belongs_to :user
-- belongs_to item
+- belongs_to :item
 
 ## addressesテーブル名
 
@@ -50,11 +54,12 @@
 |post_code|integer|null: false   |
 |prefectures |text|null: false   |
 |municipalities |text|null: false   |
+|street_address |text|null: false   |
 |building_name |text|null: false   |
 |tell|string|null: false   |
 |user   |references|null:false,foreign_key: true   |
 |item|references|null:false,foreign_key: true|
+|order|references|null:false,foreign_key: true|
 
 ### Association
-- belongs_to :user
 - belongs_to :order
