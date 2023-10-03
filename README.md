@@ -23,7 +23,7 @@
 |item_title |string|null:false |
 |item_text |text|null: false   |
 |item_price |integer|null:false   |
-|category_id |string|null:false   |
+|category_id |integer|null:false   |
 |condition_id |integer|null:false |
 |shipping_fee_id|integer|null:false |
 |shipping_area_id |integer|null:false |
@@ -51,7 +51,7 @@
 |Column|Type|Options|
 |---------|----|--------|
 |post_code|string|null: false   |
-|shipping_area_id |string|null: false   |
+|shipping_area_id |integer|null: false   |
 |municipalities |string|null: false   |
 |street_address |string|null: false   |
 |building_name |string|
