@@ -23,11 +23,11 @@
 |item_title |string|null:false |
 |item_text |text|null: false   |
 |item_price |integer|null:false   |
-|category.id |string|null:false   |
-|condition.id |integer|null:false |
-|shipping_fee.id|integer|null:false |
-|shipping_area.id |integer|null:false |
-|shipping_days.id |integer|null:false |
+|category_id |string|null:false   |
+|condition_id |integer|null:false |
+|shipping_fee_id|integer|null:false |
+|shipping_area_id |integer|null:false |
+|shipping_days_id |integer|null:false |
 |user|references|null:false, foreign_key: true |
 
 ### Association
@@ -51,10 +51,10 @@
 |Column|Type|Options|
 |---------|----|--------|
 |post_code|string|null: false   |
-|shipping_area.id |string|null: false   |
+|shipping_area_id |string|null: false   |
 |municipalities |string|null: false   |
 |street_address |string|null: false   |
-|building_name |string|null: false   |
+|building_name |string|
 |tell|string|null: false   |
 |order|references|null:false,foreign_key: true|
 
