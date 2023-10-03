@@ -1,4 +1,4 @@
-## usersテーブル名
+## usersテーブル
 
 |Column|Type|Options|
 |---------|----|--------|
@@ -14,29 +14,27 @@
 
 ### Association
 - has_many :items
-- has_many :order
+- has_many :orders
 
-## Itemsテーブル名
+## Itemsテーブル
 
 |Column|Type|Options|
 |---------|----|--------|
 |item_title |string|null:false |
 |item_text |text|null: false   |
 |item_price |integer|null:false   |
-|category |string|null:false   |
-|condition |string|null:false |
-|shipping_fee |string|null:false |
-|shipping_area |string|null:false |
-|shipping_days |string|null:false |
-|sales_commission |string|null:false   |
-|profit |string|null:false   |
+|category.id |string|null:false   |
+|condition.id |integer|null:false |
+|shipping_fee.id|integer|null:false |
+|shipping_area.id |integer|null:false |
+|shipping_days.id |integer|null:false |
 |user|references|null:false, foreign_key: true |
 
 ### Association
 - belongs_to :user
 - has_one  :order
 
-## Ordersテーブル名
+## Ordersテーブル
 
 |Column|Type|Options|
 |---------|----|--------|
@@ -46,19 +44,18 @@
 ### Association
 - belongs_to :user
 - belongs_to :item
+- has_one  :address
 
-## addressesテーブル名
+## addressesテーブル
 
 |Column|Type|Options|
 |---------|----|--------|
-|post_code|integer|null: false   |
-|prefectures |text|null: false   |
-|municipalities |text|null: false   |
-|street_address |text|null: false   |
-|building_name |text|null: false   |
+|post_code|string|null: false   |
+|shipping_area.id |string|null: false   |
+|municipalities |string|null: false   |
+|street_address |string|null: false   |
+|building_name |string|null: false   |
 |tell|string|null: false   |
-|user   |references|null:false,foreign_key: true   |
-|item|references|null:false,foreign_key: true|
 |order|references|null:false,foreign_key: true|
 
 ### Association
