@@ -1,4 +1,4 @@
-## usersテーブル
+## Usersテーブル
 
 |Column|Type|Options|
 |---------|----|--------|
@@ -46,7 +46,7 @@
 - belongs_to :item
 - has_one  :address
 
-## addressesテーブル
+## Addressesテーブル
 
 |Column|Type|Options|
 |---------|----|--------|
