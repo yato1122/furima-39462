@@ -41,17 +41,17 @@ RSpec.describe User, type: :model do
       @user.valid?
       expect(@user.errors.full_messages).to include("Last name kana can't be blank")
     end
-    
+
     it '名前カタカナが空では登録できない' do
       @user.first_name_kana = ''
       @user.valid?
       expect(@user.errors.full_messages).to include("First name kana can't be blank")
-    end    
+    end
 
     it '誕生日が空では登録できない' do
       @user.birthday = nil
       @user.valid?
-      expect(@user.errors.full_messages).to include("Birthday can't be blank")    
+      expect(@user.errors.full_messages).to include("Birthday can't be blank")
     end
   end
 end
