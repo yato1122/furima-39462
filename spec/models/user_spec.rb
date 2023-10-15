@@ -65,19 +65,19 @@ RSpec.describe User, type: :model do
     it '英字のみのパスワードでは登録できない' do
       @user.password = 'password'
       @user.valid?
-      expect(@user.errors.full_messages).to include('Password must include both letters and numbers')
+      expect(@user.errors.full_messages).to include('Password must include at least one letter and one digit')
     end
 
     it '数字のみのパスワードでは登録できない' do
       @user.password = '123456'
       @user.valid?
-      expect(@user.errors.full_messages).to include('Password must include both letters and numbers')
+      expect(@user.errors.full_messages).to include('Password must include at least one letter and one digit')
     end
 
     it '全角文字を含むパスワードでは登録できない' do
       @user.password = 'パスワード123'
       @user.valid?
-      expect(@user.errors.full_messages).to include('Password must include both letters and numbers')
+      expect(@user.errors.full_messages).to include('Password must include at least one letter and one digit')
     end
 
     it '名字が空では登録できない' do
