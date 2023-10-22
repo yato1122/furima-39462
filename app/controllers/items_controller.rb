@@ -5,6 +5,11 @@ class ItemsController < ApplicationController
 
   def new
     @item = Item.new
+    @categories = Category.all
+    @conditions = Condition.all
+    @shipping_areas = ShippingArea.all
+    @shipping_days = ShippingDay.all
+    @shipping_fee = ShippingFee.all
   end
 
   def create
