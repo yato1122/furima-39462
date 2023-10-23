@@ -5,11 +5,6 @@ class ItemsController < ApplicationController
 
   def new
     @item = Item.new
-    @categories = Category.all
-    @conditions = Condition.all
-    @shipping_areas = ShippingArea.all
-    @shipping_days = ShippingDay.all
-    @shipping_fee = ShippingFee.all
   end
 
   def create
@@ -23,16 +18,17 @@ class ItemsController < ApplicationController
 
  
 
-  def edit
-  end
+  # def edit
+  # end
 
-  def delete
-  end
-end
+  # def delete
+  # end
+
 
 private
 def item_params
   params.require(:item).permit(
+    :item_image,
     :item_title,
     :item_text,
     :item_price,
@@ -41,5 +37,6 @@ def item_params
     :shipping_fee_id,
     :shipping_area_id,
     :shipping_days_id
-  )
+  ).merge(user_id: current_user.id)
+end
 end
