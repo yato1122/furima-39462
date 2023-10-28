@@ -2,8 +2,7 @@ require 'rails_helper'
 
 RSpec.describe Item, type: :model do
   before do
-    @user = FactoryBot.create(:user)
-    @item = FactoryBot.build(:item, user: @user)
+    @item = FactoryBot.build(:item)
   end
 
   context '商品のバリデーション' do
@@ -16,6 +15,20 @@ RSpec.describe Item, type: :model do
     context '商品の出品に失敗する場合' do
       it '商品画像が空では出品できない' do
         @item.item_image = nil
+        expect(@item).to_not be_valid
+      end
+      it '商品名が空では出品できない' do
+        @item.item_title = nil
+        expect(@item).to_not be_valid
+      end
+
+      it '商品説明が空では出品できない' do
+        @item.item_text = nil
+        expect(@item).to_not be_valid
+      end
+
+      it '価格が空では出品できない' do
+        @item.item_price = nil
         expect(@item).to_not be_valid
       end
 
