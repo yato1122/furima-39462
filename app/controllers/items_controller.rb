@@ -1,7 +1,7 @@
 class ItemsController < ApplicationController
   before_action :authenticate_user!, only: [:new]
   def index
-    # @items = Item.all
+    @items = Item.all
   end
 
   def new
@@ -35,7 +35,7 @@ class ItemsController < ApplicationController
       :condition_id,
       :shipping_fee_id,
       :shipping_area_id,
-      :shipping_days_id
+      :shipping_day_id
     ).merge(user_id: current_user.id)
   end
 end
