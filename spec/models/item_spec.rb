@@ -15,21 +15,26 @@ RSpec.describe Item, type: :model do
     context '商品の出品に失敗する場合' do
       it '商品画像が空では出品できない' do
         @item.item_image = nil
-        expect(@item).to_not be_valid
+        @item.valid?
+        expect(@item.errors[:item_image]).to include("can't be blank")
       end
+
       it '商品名が空では出品できない' do
         @item.item_title = nil
-        expect(@item).to_not be_valid
+        @item.valid?
+        expect(@item.errors[:item_title]).to include("can't be blank")
       end
 
       it '商品説明が空では出品できない' do
         @item.item_text = nil
-        expect(@item).to_not be_valid
+        @item.valid?
+        expect(@item.errors[:item_text]).to include("can't be blank")
       end
 
       it '価格が空では出品できない' do
         @item.item_price = nil
-        expect(@item).to_not be_valid
+        @item.valid?
+        expect(@item.errors[:item_price]).to include("can't be blank")
       end
 
       it 'カテゴリーに「---」が選択されている場合は出品できない' do
