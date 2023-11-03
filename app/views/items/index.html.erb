@@ -145,7 +145,7 @@
             <%= item.item_title %>
           </h3>
           <div class='item-price'>
-            <span><%= item.item_price %>円<br><%= '(税込み)' %></span>
+            <span><%= item.item_price %>円<br><%= item.shipping_fee.name %></span>
             <div class='item-image'>
               <%= image_tag "star.png", class:"star-icon" %>
               <span class='star-count'>0</span>
@@ -160,6 +160,7 @@
       <%# 商品がない場合は以下のダミー商品が表示されるようにしましょう %>
       <%# 商品がある場合は表示されないようにしましょう %>
       <li class='list'>
+      <% if @items[0] == nil %>
        <%= link_to new_item_path do %>
         <%= image_tag "https://tech-master.s3.amazonaws.com/uploads/curriculums/images/Rails1-4/sample.jpg", class: "item-img" %>
         <div class='item-info'>
@@ -187,3 +188,4 @@
   <%= image_tag 'icon_camera.png' , size: '185x50' ,class: "purchase-btn-icon" %>
 <% end %>
 <%= render "shared/footer" %>
+<%end%>
