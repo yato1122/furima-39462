@@ -1,12 +1,19 @@
 class OrderAddress
   include ActiveModel::Model
-  attr_accessor :postal_code, :shipping_area_id, :municipalities, :street_address, :building_name, :tell, :order,:user_id, :item
+  attr_accessor :post_code, :shipping_area_id, :municipalities, :street_address, :building_name, :tell, :order,:user_id, :item_id
   
   with_options presence: true do
     validates :shipping_area_id
     validates :user_id
-    validates :postal_code, format: {with: /\A[0-9]{3}-[0-9]{4}\z/, message: "is invalid. Include hyphen(-)"}
+    validates :post_code, format: {with: /\A[0-9]{3}-[0-9]{4}\z/, message: "is invalid. Include hyphen(-)"}
     validates :municipalities
     validates :street_address
     validates :tell
+
+end
+def save
+
+  order = Order.create(item_price:@item.item_price, user_id: user_id)
+  Address.create(:post_code,:municipalities, :shipping_area_id, :street_address, :building_name, :tell, order_id: order.id)
+end
 end
