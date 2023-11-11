@@ -12,8 +12,13 @@ class OrderAddress
 
 end
 def save
-
-  order = Order.create(item_price:@item.item_price, user_id: user_id)
-  Address.create(:post_code,:municipalities, :shipping_area_id, :street_address, :building_name, :tell, order_id: order.id)
+  order = Order.create(item_id: @item_id, user_id: user_id)
+  Address.create(post_code: post_code,
+    municipalities: municipalities,
+    shipping_area_id: shipping_area_id,
+    street_address: street_address,
+    building_name: building_name,
+    tell: tell,
+    order_id: order.id)
 end
 end
