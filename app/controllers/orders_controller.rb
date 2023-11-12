@@ -3,7 +3,17 @@ class OrdersController < ApplicationController
   def index
     gon.public_key = ENV["PAYJP_PUBLIC_KEY"]
     @order_address = OrderAddress.new
+    if user_signed_in?
+      # ログインしている場合の処理
+      if current_user == @item.user || @item.order.present?
+        redirect_to root_path
+      end
+    else
+      # ログインしていない場合の処理
+      redirect_to new_user_session_path
+    end
   end
+
 
   def new
   end
