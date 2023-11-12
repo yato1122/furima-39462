@@ -15,7 +15,7 @@ RSpec.describe OrderAddress, type: :model do
         @order_address.building_name = ''
         expect(@order_address).to be_valid
       end
-      it "tokenがあれば保存ができること" do
+      it 'tokenがあれば保存ができること' do
         expect(@order_address).to be_valid
       end
     end
@@ -29,7 +29,7 @@ RSpec.describe OrderAddress, type: :model do
       it 'post_codeが半角のハイフンを含んだ正しい形式でないと保存できないこと' do
         order_address = FactoryBot.build(:order_address, post_code: '1234567')
         order_address.valid?
-        expect(order_address.errors[:post_code]).to include("is invalid. Include hyphen(-)")
+        expect(order_address.errors[:post_code]).to include('is invalid. Include hyphen(-)')
       end
 
       it 'shipping_area_idを選択していないと保存できないこと' do
@@ -55,7 +55,7 @@ RSpec.describe OrderAddress, type: :model do
         order_address.valid?
         expect(order_address.errors[:tell]).to include("can't be blank")
       end
-      it "tokenが空では登録できないこと" do
+      it 'tokenが空では登録できないこと' do
         @order_address.token = nil
         @order_address.valid?
         expect(@order_address.errors.full_messages).to include("Token can't be blank")

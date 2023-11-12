@@ -9,7 +9,7 @@ class Item < ApplicationRecord
   belongs_to :user
   has_one_attached :item_image
   validates :item_image, presence: true
-  has_one  :order
+  has_one :order
   validates :item_title, presence: true
   validates :item_text, presence: true
   validates :category_id, numericality: { other_than: 1 }
@@ -18,5 +18,5 @@ class Item < ApplicationRecord
   validates :shipping_day_id, numericality: { other_than: 1 }
   validates :shipping_fee_id, numericality: { other_than: 1 }
   validates :item_price, presence: true,
-   numericality: { only_integer: true, greater_than_or_equal_to: 300, less_than_or_equal_to: 9_999_999, message: 'is invalid' }
+                         numericality: { only_integer: true, greater_than_or_equal_to: 300, less_than_or_equal_to: 9_999_999, message: 'is invalid' }
 end
