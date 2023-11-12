@@ -15,6 +15,9 @@ RSpec.describe OrderAddress, type: :model do
         @order_address.building_name = ''
         expect(@order_address).to be_valid
       end
+      it "tokenがあれば保存ができること" do
+        expect(@order_address).to be_valid
+      end
     end
 
     context '内容に問題がある場合' do
@@ -51,6 +54,11 @@ RSpec.describe OrderAddress, type: :model do
         order_address = FactoryBot.build(:order_address, tell: nil)
         order_address.valid?
         expect(order_address.errors[:tell]).to include("can't be blank")
+      end
+      it "tokenが空では登録できないこと" do
+        @order.token = nil
+        @order.valid?
+        expect(@order.errors.full_messages).to include("Token can't be blank")
       end
     end
   end
