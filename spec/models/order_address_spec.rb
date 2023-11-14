@@ -35,9 +35,9 @@ RSpec.describe OrderAddress, type: :model do
       end
 
       it 'shipping_area_idを選択していないと保存できないこと' do
-        @order_address.shipping_area_id = nil
+        @order_address.shipping_area_id = 1  
         @order_address.valid?
-        expect(@order_address.errors[:shipping_area_id]).to include("can't be blank")
+        expect(@order_address.errors[:shipping_area_id]).to include("must be other than 1")
       end
 
       it 'municipalitiesが空だと保存できないこと' do
@@ -62,6 +62,12 @@ RSpec.describe OrderAddress, type: :model do
         @order_address.tell = '123456789' # 9桁
         @order_address.valid?
         expect(@order_address.errors.full_messages).to include("Tell is too short (minimum is 10 characters)")
+      end
+
+      it 'tellが12桁以上では購入できない' do
+        @order_address.tell = '123456789012' # 12桁
+        @order_address.valid?
+        expect(@order_address.errors.full_messages).to include("Tell is invalid")
       end
 
       it 'tellに半角数字以外が含まれている場合は購入できない' do
