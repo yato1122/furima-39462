@@ -11,7 +11,7 @@ class OrderAddress
     validates :municipalities
     validates :street_address
     validates :tell, length: { minimum: 10 }, format: { with: /\A\d{10,11}\z/, message: 'is invalid' }
-    validates :token, presence: true
+    validates :token
   end
 end
 

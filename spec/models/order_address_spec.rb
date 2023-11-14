@@ -27,34 +27,35 @@ RSpec.describe OrderAddress, type: :model do
         @order_address.valid?
         expect(@order_address.errors.full_messages).to include("Post code can't be blank")
       end
+      
       it 'post_codeが半角のハイフンを含んだ正しい形式でないと保存できないこと' do
-        order_address = FactoryBot.build(:order_address, post_code: '1234567')
-        order_address.valid?
-        expect(order_address.errors[:post_code]).to include('is invalid. Include hyphen(-)')
+        @order_address.post_code = '1234567'
+        @order_address.valid?
+        expect(@order_address.errors[:post_code]).to include('is invalid. Include hyphen(-)')
       end
 
       it 'shipping_area_idを選択していないと保存できないこと' do
-        order_address = FactoryBot.build(:order_address, shipping_area_id: nil)
-        order_address.valid?
-        expect(order_address.errors[:shipping_area_id]).to include("can't be blank")
+        @order_address.shipping_area_id = nil
+        @order_address.valid?
+        expect(@order_address.errors[:shipping_area_id]).to include("can't be blank")
       end
 
       it 'municipalitiesが空だと保存できないこと' do
-        order_address = FactoryBot.build(:order_address, municipalities: nil)
-        order_address.valid?
-        expect(order_address.errors[:municipalities]).to include("can't be blank")
+        @order_address.municipalities = nil
+        @order_address.valid?
+        expect(@order_address.errors[:municipalities]).to include("can't be blank")
       end
 
       it 'street_addressが空だと保存できないこと' do
-        order_address = FactoryBot.build(:order_address, street_address: nil)
-        order_address.valid?
-        expect(order_address.errors[:street_address]).to include("can't be blank")
+        @order_address.street_address = nil
+        @order_address.valid?
+        expect(@order_address.errors[:street_address]).to include("can't be blank")
       end
 
       it 'tellが空では保存できないこと' do
-        order_address = FactoryBot.build(:order_address, tell: nil)
-        order_address.valid?
-        expect(order_address.errors[:tell]).to include("can't be blank")
+        @order_address.tell = nil
+        @order_address.valid?
+        expect(@order_address.errors[:tell]).to include("can't be blank")
       end
 
       it 'tellが9桁以下では購入できない' do
