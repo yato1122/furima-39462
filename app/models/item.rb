@@ -9,7 +9,7 @@ class Item < ApplicationRecord
   belongs_to :user
   has_one_attached :item_image
   validates :item_image, presence: true
-  # has_one  :order
+  has_one :order
   validates :item_title, presence: true
   validates :item_text, presence: true
   validates :category_id, numericality: { other_than: 1 }
